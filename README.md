@@ -37,14 +37,14 @@ Before you begin, ensure you have met the following requirements:
   ```
     export JDK_HOME=/usr/lib/jvm/java-16-openjdk-amd64 <-- replace this with the path to your JDK
     
-    g++ -shared -fPIC -I $JDK_HOME/include/ -I $JDK_HOME/include/linux HelloJni.cc -o libhellojni_cpp.so
+    g++ -shared -fPIC -I "$JDK_HOME/include" -I "$JDK_HOME/include/linux" HelloJni.cc -o libhellojni_cpp.so
   ```
 
   If you are on Windows
   ```
-    set JDK_HOME=... <-- replace this with the path to your JDK
+    set JDK_HOME=C:\Program Files\Java\jdk-16.0.1 <-- replace this with the path to your JDK
 
-    g++ -shared -fPIC -I $JDK_HOME/include/ -I $JDK_HOME/include/linux HelloJni.cc -o hellojni_cpp.dll
+    g++ -shared -fPIC -I "%JDK_HOME%/include" -I "%JDK_HOME%/include/win32" HelloJni.cc -o hellojni_cpp.dll
   ```
 
 4. Run the HelloJni application
@@ -77,7 +77,7 @@ private native void sayHelloFromCpp();
 3. It calls the `sayHelloFromCpp()` native Java method:
 ```java
 public static void main(String[] argv) {
-    System.out.println("Hi, this is Java nice to meet you!");
+    System.out.println("Hi, I am Java. Nice to meet you!");
 
     HelloJni app = new HelloJni();
     app.sayHelloFromCpp();
